@@ -10,6 +10,3 @@ spec:
   coreTemplate:
     spec:
       replicas: 2
-  replicantTemplate:
-    spec:
-      replicas: 3
