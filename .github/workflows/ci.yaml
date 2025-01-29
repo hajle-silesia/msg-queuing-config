@@ -16,7 +16,7 @@ jobs:
     with:
       docker-hub-username: ${{ vars.DOCKER_HUB_USERNAME }}
       docker-hub-namespace: ${{ vars.DOCKER_HUB_NAMESPACE }}
-      dir: charts/message-queuing
+      dir: charts/msg-queuing
     secrets:
       docker-hub-token: ${{ secrets.DOCKER_HUB_TOKEN }}
 
