@@ -10,3 +10,6 @@ spec:
   coreTemplate:
     spec:
       replicas: 2
+  listenersServiceTemplate:
+    spec:
+      type: LoadBalancer
