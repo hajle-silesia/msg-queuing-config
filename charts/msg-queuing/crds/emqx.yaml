@@ -13,3 +13,14 @@ spec:
   listenersServiceTemplate:
     spec:
       type: LoadBalancer
+  emqxConfig:
+    - name: EMQX_LISTENER__WSS__EXTERNAL__CERTFILE
+      valueFrom:
+        secretKeyRef:
+          name: emqx-tls
+          key: tls.crt
+    - name: EMQX_LISTENER__WSS__EXTERNAL__KEYFILE
+      valueFrom:
+        secretKeyRef:
+          name: emqx-tls
+          key: tls.key
