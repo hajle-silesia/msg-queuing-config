@@ -7,20 +7,26 @@ spec:
   config:
     data:
       log.console.level = debug
+  bootstrapConfig: |
+    listeners.wss.default {
+      bind = "0.0.0.0:8084"
+      ssl_options {
+        cacertfile = "/mounted/cert/ca.crt"
+        certfile = "/mounted/cert/tls.crt"
+        keyfile = "/mounted/cert/tls.key"
+        verify = verify_none
+      }
+    }
   coreTemplate:
     spec:
       replicas: 2
+      extraVolumes:
+        - name: emqx-tls
+          secret:
+            secretName: emqx-tls
+      extraVolumeMounts:
+        - name: emqx-tls
+          mountPath: /mounted/cert
   listenersServiceTemplate:
     spec:
       type: LoadBalancer
-  emqxConfig:
-    - name: EMQX_LISTENER__WSS__EXTERNAL__CERTFILE
-      valueFrom:
-        secretKeyRef:
-          name: emqx-tls
-          key: tls.crt
-    - name: EMQX_LISTENER__WSS__EXTERNAL__KEYFILE
-      valueFrom:
-        secretKeyRef:
-          name: emqx-tls
-          key: tls.key
