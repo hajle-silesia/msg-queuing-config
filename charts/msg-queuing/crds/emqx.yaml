@@ -20,11 +20,11 @@ spec:
     spec:
       replicas: 2
       extraVolumes:
-        - name: emqx-tls
+        - name: msg-queuing
           secret:
-            secretName: emqx-tls
+            secretName: msg-queuing
       extraVolumeMounts:
-        - name: emqx-tls
+        - name: msg-queuing
           mountPath: /mounted/cert
   listenersServiceTemplate:
     spec:
