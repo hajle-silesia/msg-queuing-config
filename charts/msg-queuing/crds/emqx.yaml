@@ -5,18 +5,17 @@ metadata:
 spec:
   image: emqx/emqx:5.8.4
   config:
-    data:
+    data: |
       log.console.level = debug
-  bootstrapConfig: |
-    listeners.wss.default {
-      bind = "0.0.0.0:8084"
-      ssl_options {
-        cacertfile = "/mounted/cert/ca.crt"
-        certfile = "/mounted/cert/tls.crt"
-        keyfile = "/mounted/cert/tls.key"
-        verify = verify_none
+      listeners.wss.default {
+        bind = "0.0.0.0:8084"
+        ssl_options {
+          cacertfile = "/mounted/cert/ca.crt"
+          certfile = "/mounted/cert/tls.crt"
+          keyfile = "/mounted/cert/tls.key"
+          verify = verify_none
+        }
       }
-    }
   coreTemplate:
     spec:
       replicas: 2
