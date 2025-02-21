@@ -4,6 +4,9 @@ metadata:
   name: emqx
 spec:
   image: emqx/emqx:5.8.4
+  # Sources (TLS listener config):
+  # https://docs.emqx.com/en/emqx-operator/latest/tasks/configure-emqx-tls.html#apps.emqx.io/v2beta1
+  # https://docs.emqx.com/en/emqx/latest/configuration/listener.html
   config:
     data: |
       log.console.level = debug
